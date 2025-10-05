@@ -93,8 +93,11 @@ function drawEnemy(enemy) {
     ctx.translate(enemy.x, enemy.y);
 
     // Scale down enemies on mobile devices
-    if (isMobile) {
-        ctx.scale(0.7, 0.7);
+    // iPad keeps normal size, iPhone gets smaller
+    if (isMobile && !isTablet) {
+        ctx.scale(0.65, 0.65);
+    } else if (isTablet) {
+        ctx.scale(0.85, 0.85);
     }
 
     if (enemy.type === 'megaboss') {

@@ -8,6 +8,10 @@ const reserveCtx = reserveCanvas.getContext('2d');
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
                  (navigator.maxTouchPoints && navigator.maxTouchPoints > 2);
 
+// Detect iPad specifically (larger screen)
+const isTablet = /iPad/i.test(navigator.userAgent) ||
+                 (navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && window.innerWidth >= 768);
+
 // Show mobile controls if on mobile
 if (isMobile) {
     document.getElementById('mobileControls').style.display = 'block';
@@ -57,7 +61,8 @@ const player = {
     y: 0,
     width: 40,
     height: 30,
-    speed: 6,
+    speed: isTablet ? 5 : (isMobile ? 4 : 6),
+    baseSpeed: isTablet ? 5 : (isMobile ? 4 : 6),
     color: '#0ff',
     dualFighter: false,
     shield: false,

@@ -13,7 +13,13 @@ function update() {
         game.respawnTimer--;
         if (game.respawnTimer === 0) {
             player.x = canvas.width / 2;
-            player.y = isMobile ? canvas.height - 120 : canvas.height - 60;
+            if (isTablet) {
+                player.y = canvas.height - 100;
+            } else if (isMobile) {
+                player.y = canvas.height - 100;
+            } else {
+                player.y = canvas.height - 60;
+            }
             enemyBullets = [];
             enemies.forEach(enemy => {
                 if (enemy.originalX !== undefined) {
@@ -37,7 +43,7 @@ function update() {
         player.speedBoostTimer--;
         if (player.speedBoostTimer === 0) {
             player.speedBoost = false;
-            player.speed = 6;
+            player.speed = player.baseSpeed;
         }
     }
 
@@ -139,7 +145,13 @@ function update() {
                 enemy.capturing = false;
                 game.capturingEnemy = null;
                 player.x = canvas.width / 2;
-                player.y = isMobile ? canvas.height - 120 : canvas.height - 60;
+                if (isTablet) {
+                    player.y = canvas.height - 100;
+                } else if (isMobile) {
+                    player.y = canvas.height - 100;
+                } else {
+                    player.y = canvas.height - 60;
+                }
             }
         }
     }
@@ -412,7 +424,7 @@ function startGame(level) {
     player.shieldTimer = 0;
     player.speedBoost = false;
     player.speedBoostTimer = 0;
-    player.speed = 6;
+    player.speed = player.baseSpeed;
 
     document.getElementById('mainMenu').style.display = 'none';
     document.getElementById('pauseMenu').style.display = 'none';
@@ -422,7 +434,14 @@ function startGame(level) {
 
     player.x = canvas.width / 2;
     // Position player higher on mobile to be visible above controls
-    player.y = isMobile ? canvas.height - 120 : canvas.height - 60;
+    // iPad gets normal position, iPhone gets slightly higher
+    if (isTablet) {
+        player.y = canvas.height - 100;
+    } else if (isMobile) {
+        player.y = canvas.height - 100;
+    } else {
+        player.y = canvas.height - 60;
+    }
 
     bullets = [];
     enemyBullets = [];
