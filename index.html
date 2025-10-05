@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Space Galaga</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="game"></canvas>
+        <div id="ui">
+            <div>SCORE: <span id="score">0</span></div>
+            <div>LEVEL: <span id="level">1</span></div>
+            <div id="highScore">HIGH: 0</div>
+        </div>
+        <button id="pauseBtn">PAUSE</button>
+        <canvas id="reserveShips"></canvas>
+        <div id="mobileControls">
+            <div class="control-btn" id="leftBtn">◄</div>
+            <div class="control-btn" id="rightBtn">►</div>
+            <div class="control-btn" id="shootBtn">●</div>
+        </div>
+        <div id="mainMenu" class="menu-overlay" style="display: block;">
+            <h1>SPACE GALAGA</h1>
+            <button onclick="startGame(1)">START GAME</button>
+            <button onclick="startGame(5)">TEST BOSS LEVEL</button>
+            <button onclick="startGame(10)">LEVEL 10</button>
+            <button onclick="startGame(15)">LEVEL 15</button>
+            <p>Use Arrows/Touch to Move | Space/Button to Shoot | ESC/P to Pause</p>
+        </div>
+        <div id="pauseMenu" class="menu-overlay">
+            <h1>PAUSED</h1>
+            <button id="resumeBtn">RESUME</button>
+            <button id="mainMenuBtn">MAIN MENU</button>
+            <p>Press ESC or P to resume</p>
+        </div>
+        <div id="gameOver" class="menu-overlay">
+            <h1>GAME OVER</h1>
+            <p>Final Score: <span id="finalScore">0</span></p>
+            <p>Level Reached: <span id="finalLevel">1</span></p>
+            <div id="highScoresList"></div>
+            <button onclick="location.reload()">PLAY AGAIN</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+    <script src="draw.js"></script>
+    <script src="update.js"></script>
+</body>
+</html>
