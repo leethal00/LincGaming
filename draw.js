@@ -92,6 +92,11 @@ function drawEnemy(enemy) {
     ctx.save();
     ctx.translate(enemy.x, enemy.y);
 
+    // Scale down enemies on mobile devices
+    if (isMobile) {
+        ctx.scale(0.7, 0.7);
+    }
+
     if (enemy.type === 'megaboss') {
         // Health bar
         ctx.fillStyle = '#1a1a1a';
