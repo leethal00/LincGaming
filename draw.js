@@ -94,7 +94,7 @@ function drawEnemy(enemy) {
 
     // Scale down enemies on mobile devices
     if (isMobile) {
-        ctx.scale(0.7, 0.7);
+        ctx.scale(0.5, 0.5);
     }
 
     if (enemy.type === 'megaboss') {
